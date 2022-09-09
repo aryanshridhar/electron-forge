@@ -10,20 +10,20 @@ export default class AssetRelocatorPatch {
     this.nodeIntegration = nodeIntegration;
   }
 
-  private injectedProductionDirnameCode(): string {
-    if (this.nodeIntegration) {
-      // In production the assets are found one directory up from
-      // __dirname
-      //
-      // __dirname cannot be used directly until this PR lands
-      // https://github.com/jantimon/html-webpack-plugin/pull/1650
-      return 'require("path").resolve(require("path").dirname(__filename), "..")';
-    }
+  // private injectedProductionDirnameCode(): string {
+  //   if (this.nodeIntegration) {
+  //     // In production the assets are found one directory up from
+  //     // __dirname
+  //     //
+  //     // __dirname cannot be used directly until this PR lands
+  //     // https://github.com/jantimon/html-webpack-plugin/pull/1650
+  //     return 'require("path").resolve(require("path").dirname(__filename), "..")';
+  //   }
 
-    // If nodeIntegration is disabled, we replace __dirname
-    // with an empty string so no error is thrown at runtime
-    return '""';
-  }
+  //   // If nodeIntegration is disabled, we replace __dirname
+  //   // with an empty string so no error is thrown at runtime
+  //   return '""';
+  // }
 
   public apply(compiler: Compiler): void {
     compiler.hooks.compilation.tap('asset-relocator-forge-patch', (compilation) => {
@@ -48,9 +48,9 @@ export default class AssetRelocatorPatch {
                 throw new Error('The installed version of @vercel/webpack-asset-relocator-loader does not appear to be compatible with Forge');
               }
 
-              if (this.isProd) {
-                return originalInjectCode.replace('__dirname', this.injectedProductionDirnameCode());
-              }
+              // if (this.isProd) {
+              //   return originalInjectCode.replace('__dirname', this.injectedProductionDirnameCode());
+              // }
 
               return originalInjectCode.replace(
                 '__dirname',
