@@ -1,10 +1,10 @@
 import debug from 'debug';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackPlugin from '@vertedinde/html-webpack-plugin';
 import path from 'path';
 import webpack, { Configuration, WebpackPluginInstance } from 'webpack';
 import { merge as webpackMerge } from 'webpack-merge';
 import { WebpackPluginConfig, WebpackPluginEntryPoint, WebpackPreloadEntryPoint } from './Config';
-import AssetRelocatorPatch from './util/AssetRelocatorPatch';
+// import AssetRelocatorPatch from './util/AssetRelocatorPatch';
 import processConfig from './util/processConfig';
 
 type EntryType = string | string[] | Record<string, string | string[]>;
@@ -216,7 +216,7 @@ export default class WebpackConfigGenerator {
                 ]
               : []),
             new webpack.DefinePlugin(defines),
-            new AssetRelocatorPatch(this.isProd, !!this.pluginConfig.renderer.nodeIntegration),
+            // new AssetRelocatorPatch(this.isProd, !!this.pluginConfig.renderer.nodeIntegration),
           ],
         },
         rendererConfig || {}

@@ -29,11 +29,11 @@
     "@electron-forge/plugin-base": "6.0.0-beta.66",
     "@electron-forge/shared-types": "6.0.0-beta.66",
     "@electron-forge/web-multi-logger": "6.0.0-beta.66",
+    "@vertedinde/html-webpack-plugin": "^5.5.0",
     "chalk": "^4.0.0",
     "debug": "^4.3.1",
     "fs-extra": "^10.0.0",
     "global": "^4.3.2",
-    "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.69.1",
     "webpack-dev-server": "^4.0.0",
     "webpack-merge": "^5.7.3"
